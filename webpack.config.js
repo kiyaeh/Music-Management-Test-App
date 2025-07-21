@@ -91,9 +91,15 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         template: './public/index.html',
         favicon: './public/favicon.ico'
+      }),
+      new (require('webpack')).DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(argv.mode || 'development'),
+        'process.env.API_BASE_URL': JSON.stringify(
+          process.env.API_BASE_URL || '/api'
+        )
       })
     ],
-    
+
     // Development server configuration
     devServer: {
       static: {
@@ -105,21 +111,7 @@ module.exports = (env, argv) => {
       historyApiFallback: true, // Support for React Router
       compress: true
     },
-    
-    // Environment variables support
-    plugins: [
-      new HtmlWebpackPlugin({
-        template: './public/index.html',
-        favicon: './public/favicon.ico'
-      }),
-      new (require('webpack')).DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify(argv.mode || 'development'),
-        'process.env.API_BASE_URL': JSON.stringify(
-          process.env.API_BASE_URL || '/api'
-        )
-      })
-    ],
-    
+
     // Optimization for production
     optimization: {
       splitChunks: isProduction ? {
@@ -132,9 +124,7 @@ module.exports = (env, argv) => {
           }
         }
       } : false
-    },
-    
-    // Source maps for debugging
+    },    // Source maps for debugging
     devtool: isProduction ? 'source-map' : 'eval-source-map'
   };
 };
