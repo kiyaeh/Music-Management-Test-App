@@ -62,7 +62,14 @@ This application allows users to manage a collection of songs with full CRUD (Cr
    npm install
    ```
 
-3. **Start the development server**
+3. **Set up environment variables**
+   ```bash
+   cp .env.development.example .env.development
+   cp .env.production.example .env.production
+   ```
+   Edit the `.env.development` file with your local configuration if needed.
+
+4. **Start the development server**
    ```bash
    npm start
    ```

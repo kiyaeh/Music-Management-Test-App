@@ -6,11 +6,17 @@ dist/
 build/
 
 # Environment variables
+# All .env files are ignored for security
 .env
 .env.local
 .env.development
 .env.production
+.env.test
+.env.staging
 .env.*.local
+
+# Exception: Template files are tracked
+!.env*.example
 
 # IDE files
 .vscode/
