@@ -5,12 +5,10 @@ import { store } from '@store/store';
 import App from './App';
 import { startMirageServer } from './mirage/server';
 
-// Start the mock API server in development
-if (process.env.NODE_ENV !== 'production') {
-  console.log('Starting MirageJS server...');
-  startMirageServer();
-  console.log('MirageJS server started');
-}
+// Start the mock API server for demo purposes
+console.log('Starting MirageJS server...');
+startMirageServer();
+console.log('MirageJS server started');
 
 // Get the root element
 const container = document.getElementById('root');

@@ -1,4 +1,4 @@
-# 🎵 Addis Music Manager
+# 🎵 Addis Music Managerement Web App
 
 A full-stack music management application built with React, Redux Saga, and Webpack. This project demonstrates modern frontend development practices with manual Webpack configuration and comprehensive CRUD operations.
 
@@ -34,7 +34,7 @@ This application allows users to manage a collection of songs with full CRUD (Cr
 
 ### 🛠 Technologies Used
 
-- **Frontend Framework**: React 18 (Functional Components with Hooks)
+- **Frontend**: React 18 (Functional Components with Hooks)
 - **State Management**: Redux Toolkit + Redux-Saga
 - **Styling**: Emotion + Styled System
 - **Build Tool**: Webpack 5 (Manual Configuration)
@@ -45,7 +45,7 @@ This application allows users to manage a collection of songs with full CRUD (Cr
 
 ### Prerequisites
 
-- Node.js (v16 or higher)
+- Node.js (v18 or higher)
 - npm or yarn
 - Git
 
@@ -53,8 +53,8 @@ This application allows users to manage a collection of songs with full CRUD (Cr
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/kiyaeh/Addis-Music-Test-Repo.git
-   cd Addis-Music-Test-Repo
+   git clone https://github.com/kiyaeh/Music-Management-Test-App.git
+   cd Music-Management-Test-App
    ```
 
 2. **Install dependencies**

@@ -1,11 +1,12 @@
 {
   "name": "addis-music-app",
   "version": "1.0.0",
-  "description": "A full-stack music management application built with React, Redux Saga, and Webpack",
+  "description": "A full-stack music management application built with React",
   "main": "src/index.js",
   "scripts": {
     "start": "webpack serve --mode development --open",
     "build": "webpack --mode production",
+    "vercel-build": "webpack --mode production",
     "test": "jest",
     "test:watch": "jest --watch"
   },
