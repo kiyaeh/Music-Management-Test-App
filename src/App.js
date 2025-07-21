@@ -3,6 +3,8 @@ import { ThemeProvider } from '@emotion/react';
 import { Global, css } from '@emotion/react';
 import { theme } from './styles/theme';
 import SongManager from '@components/SongManager';
+import ToasterContainer from '@components/ToasterContainer';
+import ToasterDemo from '@components/ToasterDemo';
 
 // Global styles
 const globalStyles = css`
@@ -100,6 +102,9 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <Global styles={globalStyles} />
       <SongManager />
+      <ToasterContainer />
+      {/* Temporarily added for testing - remove in production */}
+      {/* <ToasterDemo /> */}
     </ThemeProvider>
   );
 };

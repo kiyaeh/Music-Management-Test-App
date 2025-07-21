@@ -6,6 +6,7 @@ import {
   deleteSongStart, deleteSongSuccess, deleteSongFailure,
   selectCurrentPage
 } from '../slices/songsSlice';
+import { showSuccessToast, showErrorToast } from '../slices/toasterSlice';
 import { songsAPI } from '../../services/songsAPI';
 
 // Worker Sagas
@@ -28,11 +29,24 @@ function* createSongSaga(action) {
     const newSong = yield call(songsAPI.createSong, action.payload);
     console.log('Song created:', newSong);
     yield put(createSongSuccess(newSong));
+    
+    // Show success toast
+    yield put(showSuccessToast({
+      title: 'Song Added!',
+      message: `"${action.payload.title}" by ${action.payload.artist} has been added to your collection.`
+    }));
+    
     // Refresh the song list after creating
     yield put(fetchSongsStart());
   } catch (error) {
     console.error('Error creating song:', error);
     yield put(createSongFailure(error.message));
+    
+    // Show error toast
+    yield put(showErrorToast({
+      title: 'Failed to Add Song',
+      message: error.message || 'Unable to add the song. Please try again.'
+    }));
   }
 }
 
@@ -40,21 +54,48 @@ function* updateSongSaga(action) {
   try {
     const updatedSong = yield call(songsAPI.updateSong, action.payload.id, action.payload.data);
     yield put(updateSongSuccess(updatedSong));
+    
+    // Show success toast
+    yield put(showSuccessToast({
+      title: 'Song Updated!',
+      message: `"${action.payload.data.title}" has been successfully updated.`
+    }));
+    
     // Refresh the song list after updating
     yield put(fetchSongsStart());
   } catch (error) {
     yield put(updateSongFailure(error.message));
+    
+    // Show error toast
+    yield put(showErrorToast({
+      title: 'Failed to Update Song',
+      message: error.message || 'Unable to update the song. Please try again.'
+    }));
   }
 }
 
 function* deleteSongSaga(action) {
   try {
-    yield call(songsAPI.deleteSong, action.payload);
-    yield put(deleteSongSuccess(action.payload));
+    const { id, song } = action.payload;
+    yield call(songsAPI.deleteSong, id);
+    yield put(deleteSongSuccess(id));
+    
+    // Show success toast with song details
+    yield put(showSuccessToast({
+      title: 'Song Deleted!',
+      message: `"${song.title}" by ${song.artist} has been removed from your collection.`
+    }));
+    
     // Refresh the song list after deleting
     yield put(fetchSongsStart());
   } catch (error) {
     yield put(deleteSongFailure(error.message));
+    
+    // Show error toast
+    yield put(showErrorToast({
+      title: 'Failed to Delete Song',
+      message: error.message || 'Unable to delete the song. Please try again.'
+    }));
   }
 }
 

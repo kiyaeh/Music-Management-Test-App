@@ -292,7 +292,7 @@ const SongList = ({ songs, loading }) => {
   const handleDelete = (song, e) => {
     e.stopPropagation();
     if (window.confirm(`Are you sure you want to delete "${song.title}" by ${song.artist}?`)) {
-      dispatch(deleteSongStart(song.id));
+      dispatch(deleteSongStart({ id: song.id, song: song }));
     }
   };
 

@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import songsReducer from './slices/songsSlice';
+import toasterReducer from './slices/toasterSlice';
 import rootSaga from './sagas/rootSaga';
 
 // Create the saga middleware
@@ -9,7 +10,8 @@ const sagaMiddleware = createSagaMiddleware();
 // Configure the store
 export const store = configureStore({
   reducer: {
-    songs: songsReducer
+    songs: songsReducer,
+    toaster: toasterReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
